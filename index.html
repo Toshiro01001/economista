@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>Marginal Estudos Econômicos | Cenários, planejamento financeiro e viabilidade (demonstração)</title>
+  <meta name="description" content="Site de demonstração de uma economista independente fictícia em Cuiabá: simulador de juros e inflação, comparador Price x SAC, termômetro com séries inventadas e pedido de estudo. Feito pela Mil e Uma Linhas!">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+  <p class="faixa-demo">
+    Demonstração da <a href="https://mileumalinhas.com.br" rel="noopener">Mil e Uma Linhas!</a> com dados fictícios. Nenhum estudo é contratado aqui.
+  </p>
+
+  <header class="topo">
+    <div class="miolo topo-linha">
+      <a class="marca" href="#inicio">
+        <img class="marca-icone" src="favicon.svg" width="34" height="34" alt="">
+        <span class="marca-texto">
+          <span class="marca-nome">Marginal</span>
+          <span class="marca-sub">estudos econômicos · fictício</span>
+        </span>
+      </a>
+      <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="menu-botao-linhas" aria-hidden="true"></span>
+        <span class="menu-botao-rotulo">Menu</span>
+      </button>
+      <nav id="menu" class="menu" aria-label="Seções do site">
+        <ul>
+          <li><a href="#servicos">O que eu faço</a></li>
+          <li><a href="#simulador">Juros e inflação</a></li>
+          <li><a href="#financiamento">Financiamento</a></li>
+          <li><a href="#termometro">Termômetro</a></li>
+          <li><a href="#pedido" class="menu-destaque">Pedir um estudo</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section id="inicio" class="hero">
+      <div class="miolo hero-grade">
+        <div class="hero-texto">
+          <h1>Eu faço a conta. A decisão continua sendo sua.</h1>
+          <p class="hero-posicao">O número, o cenário e a dúvida, nessa ordem.</p>
+          <p>Sou economista independente em Cuiabá. Analiso cenários, planejo as finanças de empresas e de pessoas, faço estudos de viabilidade e escrevo pareceres. Logo abaixo há três ferramentas para você testar agora, sem cadastro.</p>
+          <p class="hero-acoes">
+            <a class="botao botao-principal" href="#simulador">Simular juros e inflação</a>
+            <a class="botao botao-contorno" href="#pedido">Pedir um estudo</a>
+          </p>
+        </div>
+        <figure class="hero-figura">
+          <div class="hero-moldura">
+            <img class="hero-foto" src="img/hero.webp" width="1600" height="1067" alt="Quadro de giz escuro com duas curvas que se cruzam, uma clara e outra amarela, e um ponto vermelho no cruzamento. Imagem provisória da demonstração.">
+          </div>
+          <figcaption>Oferta e demanda se encontram onde a conversa começa.</figcaption>
+        </figure>
+      </div>
+      <div class="regua" aria-hidden="true"></div>
+    </section>
+
+    <section id="servicos" class="secao">
+      <div class="miolo">
+        <h2>O que eu faço</h2>
+        <p class="frase">Quatro tipos de trabalho. Leia o que cada um entrega e, se algum for o seu caso, peça o estudo mais abaixo.</p>
+        <div class="servicos">
+          <article class="servico">
+            <svg class="servico-icone" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M6 24H20"/><path d="M20 24L42 10"/><path d="M20 24H42"/><path d="M20 24L42 38"/><circle cx="20" cy="24" r="3"/></svg>
+            <h3>Análise de cenários</h3>
+            <p>Monto três futuros possíveis para a sua decisão (o provável, o ruim e o bom) e mostro o que muda no seu caixa em cada um. Você sai com uma tabela e com a pergunta certa a fazer.</p>
+            <p class="servico-prazo">Entrega em cerca de 10 dias</p>
+          </article>
+          <article class="servico">
+            <svg class="servico-icone" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M6 40H16V30H26V20H36V10H42"/><path d="M6 44H42"/></svg>
+            <h3>Planejamento financeiro</h3>
+            <p>Para empresas e para pessoas: quanto entra, quanto sai, quanto sobra e para onde a sobra deve ir. O plano cabe em uma página e tem metas que dá para acompanhar mês a mês.</p>
+            <p class="servico-prazo">Entrega em cerca de 15 dias</p>
+          </article>
+          <article class="servico">
+            <svg class="servico-icone" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M6 36C16 36 22 12 42 12"/><path d="M6 24H42" stroke-dasharray="4 4"/><circle cx="24" cy="24" r="3"/></svg>
+            <h3>Estudo de viabilidade</h3>
+            <p>Antes de abrir a filial, comprar a máquina ou lançar o produto, eu respondo: dá para pagar a conta, em quanto tempo volta o dinheiro e qual preço mínimo segura o projeto de pé.</p>
+            <p class="servico-prazo">Entrega em cerca de 20 dias</p>
+          </article>
+          <article class="servico">
+            <svg class="servico-icone" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M12 6H32L38 12V42H12Z"/><path d="M18 20H32M18 26H32M18 32H27"/></svg>
+            <h3>Parecer econômico</h3>
+            <p>Um documento assinado que explica, com números e fontes, o impacto econômico de um fato, para apresentar a sócios, bancos, conselhos ou à Justiça. Linguagem direta, sem juridiquês e sem economês.</p>
+            <p class="servico-prazo">Entrega em cerca de 12 dias</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="simulador" class="secao secao-clara">
+      <div class="miolo">
+        <h2>Quanto o seu dinheiro vira, e quanto ele vale de verdade</h2>
+        <p class="frase">Preencha os cinco campos e veja duas linhas: o saldo em reais futuros (nominal) e o mesmo saldo em reais de hoje (real, já descontada a inflação).</p>
+
+        <div class="sim-grade">
+          <form id="form-sim" class="campos" novalidate autocomplete="off">
+            <div class="campo">
+              <label for="sim-inicial">Quanto você tem para começar (R$)</label>
+              <input id="sim-inicial" name="inicial" type="text" inputmode="decimal" value="5.000" aria-describedby="sim-inicial-erro">
+              <p class="erro" id="sim-inicial-erro" hidden></p>
+            </div>
+            <div class="campo">
+              <label for="sim-aporte">Quanto guarda por mês (R$)</label>
+              <input id="sim-aporte" name="aporte" type="text" inputmode="decimal" value="500" aria-describedby="sim-aporte-erro">
+              <p class="erro" id="sim-aporte-erro" hidden></p>
+            </div>
+            <div class="campo">
+              <label for="sim-anos">Por quantos anos</label>
+              <input id="sim-anos" name="anos" type="text" inputmode="numeric" value="10" aria-describedby="sim-anos-erro">
+              <p class="erro" id="sim-anos-erro" hidden></p>
+            </div>
+            <div class="campo">
+              <label for="sim-juros">Rendimento ao ano (%)</label>
+              <input id="sim-juros" name="juros" type="text" inputmode="decimal" value="10,5" aria-describedby="sim-juros-erro">
+              <p class="erro" id="sim-juros-erro" hidden></p>
+            </div>
+            <div class="campo">
+              <label for="sim-inflacao">Inflação ao ano (%)</label>
+              <input id="sim-inflacao" name="inflacao" type="text" inputmode="decimal" value="4,5" aria-describedby="sim-inflacao-erro">
+              <p class="erro" id="sim-inflacao-erro" hidden></p>
+            </div>
+            <div class="campo campo-marca">
+              <input id="sim-corrigir" name="corrigir" type="checkbox" checked>
+              <label for="sim-corrigir">Aumentar o valor guardado todo ano, no ritmo da inflação</label>
+            </div>
+          </form>
+
+          <div class="sim-resultado" aria-live="polite">
+            <dl class="numeros">
+              <div class="numero numero-real">
+                <dt>Vale hoje, em poder de compra</dt>
+                <dd id="sim-real">R$ 0,00</dd>
+              </div>
+              <div class="numero">
+                <dt>Saldo nominal no fim</dt>
+                <dd id="sim-nominal">R$ 0,00</dd>
+              </div>
+              <div class="numero">
+                <dt>Só o que você guardou</dt>
+                <dd id="sim-investido">R$ 0,00</dd>
+              </div>
+              <div class="numero">
+                <dt>Ganho real sobre o guardado</dt>
+                <dd id="sim-ganho">R$ 0,00</dd>
+              </div>
+            </dl>
+            <p class="nota" id="sim-leitura"></p>
+          </div>
+        </div>
+
+        <figure class="grafico-bloco">
+          <div class="grafico-caixa"><svg id="sim-grafico" class="grafico" role="img" aria-labelledby="sim-grafico-titulo"></svg></div>
+          <figcaption id="sim-grafico-titulo">Evolução ao longo dos anos: saldo nominal, saldo em reais de hoje e total guardado.</figcaption>
+          <ul class="legenda" aria-label="Legenda do gráfico">
+            <li><span class="amostra amostra-tinta"></span>Saldo nominal</li>
+            <li><span class="amostra amostra-lapis"></span>Saldo em reais de hoje</li>
+            <li><span class="amostra amostra-tracejada"></span>Total guardado</li>
+          </ul>
+        </figure>
+
+        <details class="tabela-detalhe">
+          <summary>Ver a tabela ano a ano</summary>
+          <div class="tabela-rolagem" tabindex="0" role="region" aria-label="Tabela ano a ano, role para o lado se precisar">
+            <table id="sim-tabela">
+              <caption class="so-leitor">Saldos ao fim de cada ano</caption>
+              <thead><tr><th scope="col">Ano</th><th scope="col">Guardado</th><th scope="col">Nominal</th><th scope="col">Em reais de hoje</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </details>
+
+        <p class="aviso"><b>Isto é uma simulação, não uma recomendação de investimento.</b> A taxa e a inflação são suposições suas, constantes e sem imposto nem taxa de corretora. A vida real oscila. Para decidir onde aplicar, converse com um profissional habilitado.</p>
+        <p><button type="button" class="botao botao-contorno" id="sim-levar">Pedir um estudo com estes números</button></p>
+      </div>
+    </section>
+
+    <section id="financiamento" class="secao">
+      <div class="miolo">
+        <h2>Financiar pela tabela Price ou pelo SAC?</h2>
+        <p class="frase">Informe o financiamento e compare as duas tabelas: a Price tem parcela fixa; no SAC a parcela começa maior e cai todo mês.</p>
+
+        <div class="sim-grade">
+          <form id="form-fin" class="campos" novalidate autocomplete="off">
+            <div class="campo">
+              <label for="fin-valor">Valor do bem (R$)</label>
+              <input id="fin-valor" name="valor" type="text" inputmode="decimal" value="350.000" aria-describedby="fin-valor-erro">
+              <p class="erro" id="fin-valor-erro" hidden></p>
+            </div>
+            <div class="campo">
+              <label for="fin-entrada">Entrada (R$)</label>
+              <input id="fin-entrada" name="entrada" type="text" inputmode="decimal" value="70.000" aria-describedby="fin-entrada-erro">
+              <p class="erro" id="fin-entrada-erro" hidden></p>
+            </div>
+            <div class="campo">
+              <label for="fin-meses">Prazo (meses, de 12 a 420)</label>
+              <input id="fin-meses" name="meses" type="text" inputmode="numeric" value="240" aria-describedby="fin-meses-erro">
+              <p class="erro" id="fin-meses-erro" hidden></p>
+            </div>
+            <div class="campo">
+              <label for="fin-juros">Juros ao ano (%)</label>
+              <input id="fin-juros" name="juros" type="text" inputmode="decimal" value="11,5" aria-describedby="fin-juros-erro">
+              <p class="erro" id="fin-juros-erro" hidden></p>
+            </div>
+          </form>
+
+          <div class="sim-resultado" aria-live="polite">
+            <div class="duas-tabelas">
+              <div class="coluna-tabela">
+                <h3>Price</h3>
+                <dl class="numeros numeros-pequenos">
+                  <div class="numero"><dt>Parcela, sempre igual</dt><dd id="fin-price-parcela">R$ 0,00</dd></div>
+                  <div class="numero"><dt>Total pago</dt><dd id="fin-price-total">R$ 0,00</dd></div>
+                  <div class="numero"><dt>Só de juros</dt><dd id="fin-price-juros">R$ 0,00</dd></div>
+                </dl>
+              </div>
+              <div class="coluna-tabela">
+                <h3>SAC</h3>
+                <dl class="numeros numeros-pequenos">
+                  <div class="numero"><dt>Primeira parcela</dt><dd id="fin-sac-primeira">R$ 0,00</dd></div>
+                  <div class="numero"><dt>Última parcela</dt><dd id="fin-sac-ultima">R$ 0,00</dd></div>
+                  <div class="numero"><dt>Total pago</dt><dd id="fin-sac-total">R$ 0,00</dd></div>
+                  <div class="numero"><dt>Só de juros</dt><dd id="fin-sac-juros">R$ 0,00</dd></div>
+                </dl>
+              </div>
+            </div>
+            <p class="nota" id="fin-leitura"></p>
+          </div>
+        </div>
+
+        <figure class="grafico-bloco">
+          <div class="grafico-caixa"><svg id="fin-grafico" class="grafico" role="img" aria-labelledby="fin-grafico-titulo"></svg></div>
+          <figcaption id="fin-grafico-titulo">Valor da parcela mês a mês, na Price e no SAC.</figcaption>
+          <ul class="legenda" aria-label="Legenda do gráfico">
+            <li><span class="amostra amostra-tinta"></span>Price (parcela fixa)</li>
+            <li><span class="amostra amostra-lapis"></span>SAC (parcela que cai)</li>
+          </ul>
+        </figure>
+
+        <div class="tabela-rolagem" tabindex="0" role="region" aria-label="Tabela de parcelas, role para o lado se precisar">
+          <table id="fin-tabela">
+            <caption>Parcelas e saldo devedor em meses escolhidos</caption>
+            <thead><tr><th scope="col">Mês</th><th scope="col">Parcela Price</th><th scope="col">Saldo Price</th><th scope="col">Parcela SAC</th><th scope="col">Saldo SAC</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <p class="aviso"><b>Simulação sem seguro, taxas e correção monetária.</b> Bancos cobram itens extras que mudam a parcela. Use a comparação para entender o formato de cada tabela, não para fechar contrato. O SAC paga menos juros no total; a Price começa com parcela menor, o que pode ajudar quem tem pouca folga hoje.</p>
+        <p><button type="button" class="botao botao-contorno" id="fin-levar">Pedir um estudo com estes números</button></p>
+      </div>
+    </section>
+
+    <section id="termometro" class="secao secao-quadro">
+      <div class="miolo">
+        <h2>Termômetro da economia</h2>
+        <p class="frase">Escolha uma linha do quadro e um período para ver como ela andou. <b>Os números são inventados</b> para esta demonstração: não são do IBGE, do Banco Central nem de ninguém.</p>
+
+        <div class="quadro-barra" role="group" aria-label="Período">
+          <span class="quadro-barra-rotulo">Período</span>
+          <button type="button" class="giz-botao" data-periodo="6" aria-pressed="false">6 meses</button>
+          <button type="button" class="giz-botao" data-periodo="12" aria-pressed="true">12 meses</button>
+          <button type="button" class="giz-botao" data-periodo="24" aria-pressed="false">2 anos</button>
+          <button type="button" class="giz-botao" data-periodo="60" aria-pressed="false">5 anos</button>
+          <button type="button" class="giz-botao" data-periodo="118" aria-pressed="false">Tudo</button>
+        </div>
+
+        <div class="cotacoes" role="group" aria-label="Série mostrada no gráfico">
+          <button type="button" class="cotacao" data-serie="inflacao" aria-pressed="true">
+            <span class="cotacao-nome">Inflação em 12 meses</span>
+            <span class="cotacao-valor" data-campo="valor">0</span>
+            <span class="cotacao-var" data-campo="variacao"></span>
+            <span class="cotacao-faixa" data-campo="faixa"></span>
+          </button>
+          <button type="button" class="cotacao" data-serie="juros" aria-pressed="false">
+            <span class="cotacao-nome">Juros básicos ao ano</span>
+            <span class="cotacao-valor" data-campo="valor">0</span>
+            <span class="cotacao-var" data-campo="variacao"></span>
+            <span class="cotacao-faixa" data-campo="faixa"></span>
+          </button>
+          <button type="button" class="cotacao" data-serie="cambio" aria-pressed="false">
+            <span class="cotacao-nome">Câmbio (R$ por moeda fictícia)</span>
+            <span class="cotacao-valor" data-campo="valor">0</span>
+            <span class="cotacao-var" data-campo="variacao"></span>
+            <span class="cotacao-faixa" data-campo="faixa"></span>
+          </button>
+        </div>
+
+        <figure class="grafico-bloco grafico-giz">
+          <div class="grafico-caixa"><svg id="ter-grafico" class="grafico" role="img" aria-labelledby="ter-grafico-titulo"></svg></div>
+          <figcaption id="ter-grafico-titulo"></figcaption>
+          <div class="cursor-controle">
+            <label for="ter-cursor">Passe por cada mês</label>
+            <input id="ter-cursor" type="range" min="0" max="11" value="11" step="1" aria-describedby="ter-leitura">
+          </div>
+          <p class="cursor-leitura" id="ter-leitura" aria-live="polite"></p>
+        </figure>
+
+        <p class="aviso aviso-giz"><b>Dados fictícios.</b> Gerei estas três séries com um sorteio de semente fixa só para mostrar como o painel funciona. Num trabalho real, eu usaria as fontes oficiais e citaria cada uma.</p>
+      </div>
+    </section>
+
+    <section id="pedido" class="secao secao-clara">
+      <div class="miolo">
+        <h2>Peça um estudo</h2>
+        <p class="frase">Conte o que você quer decidir e em quanto tempo. Nesta demonstração, o pedido aparece resumido na tela e não é enviado a ninguém.</p>
+
+        <div class="pedido-grade">
+          <form id="form-pedido" class="campos" novalidate autocomplete="off">
+            <p class="erro erro-geral" id="pedido-erro" role="alert" hidden></p>
+            <div class="campo">
+              <label for="nome">Seu nome</label>
+              <input id="nome" name="nome" type="text" autocomplete="off" aria-describedby="nome-erro">
+              <p class="erro" id="nome-erro" hidden></p>
+            </div>
+            <div class="campo">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" autocomplete="off" inputmode="email" aria-describedby="email-erro">
+              <p class="erro" id="email-erro" hidden></p>
+            </div>
+            <div class="campo">
+              <label for="telefone">Telefone com DDD (opcional)</label>
+              <input id="telefone" name="telefone" type="tel" inputmode="numeric" autocomplete="off" aria-describedby="telefone-erro">
+              <p class="erro" id="telefone-erro" hidden></p>
+            </div>
+            <div class="campo">
+              <label for="tipo">Tipo de estudo</label>
+              <select id="tipo" name="tipo" aria-describedby="tipo-erro">
+                <option value="">Escolha uma opção</option>
+                <option value="cenarios">Análise de cenários</option>
+                <option value="planejamento-empresa">Planejamento financeiro de empresa</option>
+                <option value="planejamento-pessoa">Planejamento financeiro pessoal</option>
+                <option value="viabilidade">Estudo de viabilidade</option>
+                <option value="parecer">Parecer econômico</option>
+              </select>
+              <p class="erro" id="tipo-erro" hidden></p>
+            </div>
+            <fieldset class="campo campo-grupo" aria-describedby="prazo-erro">
+              <legend>Para quando você precisa</legend>
+              <label class="opcao"><input type="radio" name="prazo" value="7"> Em 7 dias (urgente)</label>
+              <label class="opcao"><input type="radio" name="prazo" value="15"> Em 15 dias</label>
+              <label class="opcao"><input type="radio" name="prazo" value="30"> Em 30 dias</label>
+              <label class="opcao"><input type="radio" name="prazo" value="0"> Sem pressa</label>
+              <p class="erro" id="prazo-erro" hidden></p>
+            </fieldset>
+            <div class="campo">
+              <label for="mensagem">O que você quer decidir (mínimo de 20 letras)</label>
+              <textarea id="mensagem" name="mensagem" rows="5" aria-describedby="mensagem-erro"></textarea>
+              <p class="erro" id="mensagem-erro" hidden></p>
+            </div>
+            <div class="campo campo-marca">
+              <input id="ciente" name="ciente" type="checkbox" aria-describedby="ciente-erro">
+              <label for="ciente">Entendi que isto é uma demonstração e que nada será enviado</label>
+            </div>
+            <p class="erro" id="ciente-erro" hidden></p>
+            <p><button class="botao botao-principal" type="submit">Montar o resumo do pedido</button></p>
+          </form>
+
+          <section id="pedido-resumo" class="resumo" tabindex="-1" aria-labelledby="resumo-titulo" hidden>
+            <h3 id="resumo-titulo">Resumo do seu pedido</h3>
+            <p class="nota">Isto é só um resumo na tela. Nada foi enviado e nada ficou guardado neste navegador.</p>
+            <dl class="resumo-lista">
+              <div><dt>Protocolo (fictício)</dt><dd id="res-protocolo"></dd></div>
+              <div><dt>Nome</dt><dd id="res-nome"></dd></div>
+              <div><dt>E-mail</dt><dd id="res-email"></dd></div>
+              <div><dt>Telefone</dt><dd id="res-telefone"></dd></div>
+              <div><dt>Tipo de estudo</dt><dd id="res-tipo"></dd></div>
+              <div><dt>Prazo pedido</dt><dd id="res-prazo"></dd></div>
+              <div><dt>Entrega prevista</dt><dd id="res-entrega"></dd></div>
+              <div><dt>O que você quer decidir</dt><dd id="res-mensagem" class="res-texto"></dd></div>
+            </dl>
+            <p class="resumo-acoes">
+              <button type="button" class="botao botao-contorno" id="res-editar">Corrigir dados</button>
+              <button type="button" class="botao botao-contorno" id="res-novo">Fazer outro pedido</button>
+            </p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="secao secao-escura-papel">
+      <div class="miolo">
+        <h2>Como isto funciona</h2>
+        <p class="frase">Este site é uma demonstração da Mil e Uma Linhas! para mostrar a uma economista o que um site dela pode fazer. Tudo aqui é inventado.</p>
+        <div class="funciona-grade">
+          <div>
+            <h3>Para quem não é de tecnologia</h3>
+            <p>Você preenche os campos e a resposta aparece na hora, na própria página. O simulador faz a conta mês a mês, o comparador monta as duas tabelas de financiamento e o termômetro desenha a linha do período que você escolher. O pedido de estudo confere se tudo foi preenchido e mostra um resumo. Nada é enviado, ninguém recebe seus dados e não há cadastro.</p>
+          </div>
+          <div>
+            <h3>Por dentro, em linguagem comum</h3>
+            <p>Seu navegador faz todas as contas sozinho, com um pequeno programa escrito para este site. Os gráficos são desenhados na hora a partir dos números. As séries do termômetro foram inventadas uma vez e ficam guardadas em um arquivo do próprio site. Se você fechar a página, tudo some, porque nada fica guardado.</p>
+          </div>
+        </div>
+        <details class="detalhes-tecnicos">
+          <summary>Detalhes técnicos</summary>
+          <ul>
+            <li>HTML, CSS e JavaScript puros, sem framework, sem CDN, sem fonte externa e sem analytics.</li>
+            <li>Política de segurança de conteúdo restritiva (<code>default-src 'self'</code>, sem script nem estilo inline, <code>connect-src 'none'</code>, <code>form-action 'none'</code>).</li>
+            <li><code>js/calculos.js</code>: juros compostos com taxa mensal equivalente (1+i)^(1/12)-1, aporte no fim do mês, desconto pela inflação mensal equivalente, Price pela fórmula PMT e SAC com amortização constante.</li>
+            <li><code>js/graficos.js</code>: gráficos de linha em SVG gerados pelo DOM, redesenhados quando a largura muda.</li>
+            <li><code>js/dados.js</code>: séries fictícias de 118 meses, semente fixa 430.</li>
+            <li>Nada vai para <code>localStorage</code> nem para a rede. Testes com Playwright em <code>tests/site.cjs</code>.</li>
+          </ul>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="regua regua-clara" aria-hidden="true"></div>
+    <div class="miolo rodape-grade">
+      <div>
+        <p class="rodape-marca">Marginal estudos econômicos</p>
+        <p>Helena Barros Quirino, economista (Corecon-MT 00000, número fictício). Rua das Acácias, 000, Cuiabá, MT. Telefone (65) 90000-0000. Tudo fictício.</p>
+      </div>
+      <p>Site de demonstração feito pela <a href="https://mileumalinhas.com.br" rel="noopener">Mil e Uma Linhas!</a>. Nenhum dado real, nenhum serviço vendido.</p>
+    </div>
+  </footer>
+
+  <script src="js/dados.js"></script>
+  <script src="js/calculos.js"></script>
+  <script src="js/graficos.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
