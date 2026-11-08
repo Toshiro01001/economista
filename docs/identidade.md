@@ -65,13 +65,13 @@ Regra de peso: títulos sempre 700; números sempre 500 (700 fica pesado); nada 
 
 ## Imagem forte e movimento
 
-Hero: uma foto editorial de quadro de giz com as curvas de oferta e demanda (provisória, ver "Foto do hero"), em moldura 3:2 sobre papel quadriculado. Embaixo do hero, uma **régua de escala logarítmica** (as marcas 1 a 9 se repetem em quatro décadas).
+Hero: uma foto editorial de quadro de giz com as curvas de oferta e demanda (gerada por IA no Canva, ver "Foto do hero"), em moldura 3:2 sobre papel quadriculado. Embaixo do hero, uma **régua de escala logarítmica** (as marcas 1 a 9 se repetem em quatro décadas).
 
 Movimento: um só momento orquestrado, a régua logarítmica "sendo puxada" da esquerda para a direita na abertura (1,5s). Os demais movimentos respondem ao visitante: o gráfico se redesenha quando um número muda, o cursor do termômetro acompanha o controle deslizante. `prefers-reduced-motion` desliga a animação e a rolagem suave.
 
 ## Foto do hero
 
-Proporção esperada: **3:2** (1600 x 1067 px), salva como `img/hero.webp`. Hoje o arquivo é provisório, gerado com Pillow.
+Proporção esperada: **3:2** (1600 x 1067 px), salva como `img/hero.webp`. O arquivo final tem 1620 x 1080 px (gerada por IA no Canva).
 
 Prompt em português para o Canva:
 

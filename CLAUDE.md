@@ -11,4 +11,4 @@ Site de demonstração de uma economista independente fictícia em Cuiabá (cen�
 - Ao terminar uma alteração, entregue a mensagem de commit em dois blocos rotulados: "Título" (até 50 caracteres) e "Descrição" (estendida, com exatamente o que foi feito).
 - Entregue arquivos soltos, nunca em `.zip`.
 - O repositório é público: não coloque senhas, chaves secretas nem dados pessoais em arquivos versionados.
-- A foto do hero (`img/hero.webp`) é provisória, gerada com Pillow; o prompt para a foto definitiva está em `docs/identidade.md`, seção "Foto do hero". Ao trocar, mantenha 3:2 e 1600px de largura.
+- A foto do hero (`img/hero.webp`) é uma foto gerada por IA no Canva, a partir do prompt de `docs/identidade.md`, seção "Foto do hero". Ao trocar, mantenha 3:2 e 1620x1080.

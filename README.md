@@ -45,7 +45,7 @@ Seu navegador faz todas as contas sozinho. O simulador calcula mês a mês: apli
 - `index.html` (página única com âncoras), `404.html`, `css/estilo.css`, `js/calculos.js` (contas), `js/graficos.js` (gráficos de linha em SVG, redesenhados quando a largura muda), `js/dados.js` (séries fictícias, semente 430), `js/app.js` (tela), `img/` (foto provisória do hero, régua em SVG), `fonts/`.
 - Juros compostos com taxa mensal equivalente `(1+i)^(1/12)-1`, aporte no fim do mês, aporte corrigido pela inflação uma vez por ano (opcional) e valor real `nominal / (1+inflação mensal)^meses`.
 - Price: `PMT = PV*i / (1-(1+i)^-n)`. SAC: amortização `PV/n` e juros sobre o saldo.
-- `img/hero.webp` é provisório (Pillow). O prompt da foto definitiva está em `docs/identidade.md`.
+- `img/hero.webp` é uma foto gerada por IA no Canva (1620x1080), feita a partir do prompt de `docs/identidade.md`.
 
 ## Como rodar
 
