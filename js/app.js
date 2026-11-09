@@ -41,6 +41,33 @@
     if (e.key === "Escape" && menu.classList.contains("aberto")) { fechaMenu(); botaoMenu.focus(); }
   });
 
+  /* ---------- cabeçalho que se esconde ao descer e volta ao subir ---------- */
+  var topo = $(".topo"), rolagemAntes = window.pageYOffset, rolagemAgendada = false;
+  function ajustaTopo() {
+    rolagemAgendada = false;
+    var y = window.pageYOffset;
+    if (y <= 100 || menu.classList.contains("aberto")) { topo.classList.remove("topo-oculto"); }
+    else if (y > rolagemAntes + 2) { topo.classList.add("topo-oculto"); }
+    else if (y < rolagemAntes - 2) { topo.classList.remove("topo-oculto"); }
+    rolagemAntes = y;
+  }
+  window.addEventListener("scroll", function () {
+    if (!rolagemAgendada) { rolagemAgendada = true; window.requestAnimationFrame(ajustaTopo); }
+  }, { passive: true });
+  topo.addEventListener("focusin", function () { topo.classList.remove("topo-oculto"); });
+
+  /* ---------- filtros dos serviços (pílulas com contagem) ---------- */
+  $$(".pilula").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var publico = b.getAttribute("data-publico");
+      $$(".pilula").forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+      $$(".servico").forEach(function (s) {
+        var lista = (s.getAttribute("data-publico") || "").split(" ");
+        s.hidden = publico !== "todos" && lista.indexOf(publico) === -1;
+      });
+    });
+  });
+
   /* ---------- simulador de juros e inflação ---------- */
   var sim = { ok: false, p: null, pontos: null };
 
@@ -266,8 +293,24 @@
     $("#ter-grafico-titulo").textContent = SERIES[ter.serie].nome + ", de " + rotuloMes(f.de) + " a " + rotuloMes(f.de + n - 1) + ".";
     var cur = $("#ter-cursor");
     cur.max = String(n - 1); cur.value = String(sel);
+    pintaCursor();
     $("#ter-leitura").textContent = rotuloMes(f.de + sel) + ": " + fmtSerie(ter.serie, v[sel]) + " (valor fictício)";
   }
+
+  function pintaCursor() {
+    var cur = $("#ter-cursor"), max = parseInt(cur.max, 10) || 1;
+    cur.style.setProperty("--valor", (parseInt(cur.value, 10) / max * 100).toFixed(2) + "%");
+  }
+
+  /* halo que segue o ponteiro nos cartões de vidro do termômetro */
+  $$(".cotacao").forEach(function (b) {
+    b.addEventListener("pointermove", function (e) {
+      if (e.pointerType === "touch") return;
+      var r = b.getBoundingClientRect();
+      b.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      b.style.setProperty("--my", (e.clientY - r.top) + "px");
+    });
+  });
 
   function atualizaTermometro() {
     var n = Math.min(ter.periodo, DADOS[ter.serie].length);
@@ -282,7 +325,11 @@
     "planejamento-pessoa": "Planejamento financeiro pessoal", viabilidade: "Estudo de viabilidade", "parecer": "Parecer econômico"
   };
   var PRAZOS = { "7": "Em 7 dias (urgente)", "15": "Em 15 dias", "30": "Em 30 dias", "0": "Sem pressa" };
-  var formPedido = $("#form-pedido"), resumo = $("#pedido-resumo");
+  var formPedido = $("#form-pedido"), resumo = $("#pedido-resumo"), gradePedido = $(".pedido-grade");
+  function mostraResumo(sim) {
+    resumo.hidden = !sim; formPedido.hidden = sim;
+    gradePedido.classList.toggle("com-resumo", sim);
+  }
 
   function mascaraTelefone(v) {
     var d = v.replace(/\D/g, "").slice(0, 11);
@@ -340,7 +387,7 @@
     $("#res-prazo").textContent = PRAZOS[prazo];
     $("#res-entrega").textContent = prazo === "0" ? "A combinar numa primeira conversa" : "até " + dataEntrega(parseInt(prazo, 10));
     $("#res-mensagem").textContent = $("#mensagem").value.trim();
-    formPedido.hidden = true; resumo.hidden = false;
+    mostraResumo(true);
     resumo.focus();
     resumo.scrollIntoView({ behavior: reduzido ? "auto" : "smooth", block: "start" });
   });
@@ -355,19 +402,19 @@
   $$('input[name="prazo"]').forEach(function (r) { r.addEventListener("change", function () { $("#prazo-erro").hidden = true; }); });
 
   $("#res-editar").addEventListener("click", function () {
-    resumo.hidden = true; formPedido.hidden = false; $("#nome").focus();
+    mostraResumo(false); $("#nome").focus();
   });
   $("#res-novo").addEventListener("click", function () {
     formPedido.reset();
     ["nome", "email", "telefone", "tipo", "mensagem", "ciente"].forEach(function (id) { erro(id, ""); });
     $("#prazo-erro").hidden = true; $("#pedido-erro").hidden = true;
-    resumo.hidden = true; formPedido.hidden = false; $("#nome").focus();
+    mostraResumo(false); $("#nome").focus();
   });
 
   function levarParaPedido(tipo, texto) {
     $("#tipo").value = tipo; erro("tipo", "");
     $("#mensagem").value = texto; erro("mensagem", "");
-    resumo.hidden = true; formPedido.hidden = false;
+    mostraResumo(false);
     $("#pedido").scrollIntoView({ behavior: reduzido ? "auto" : "smooth", block: "start" });
     $("#mensagem").focus({ preventScroll: true });
   }
@@ -419,6 +466,7 @@
   });
   $("#ter-cursor").addEventListener("input", function () {
     ter.idx = parseInt(this.value, 10);
+    pintaCursor();
     desenhaTermometro();
     $("#ter-cursor").focus();
   });

@@ -32,7 +32,8 @@ Pensei no universo de quem trabalha com economia: papel quadriculado, quadro de 
 
 - **Cores:** papel lilás claro `#F3F2F7`, tinta violeta `#1F1830`, quadro de giz ameixa `#2B2339`, giz amarelo `#EBD36B` e um único destaque, o lápis vermelho `#B82E1D`.
 - **Fontes:** Zilla Slab (títulos e números, com cara de caderno de séries) e Atkinson Hyperlegible (texto, feita para ler fácil). As duas são livres (SIL OFL) e ficam na pasta `fonts/`.
-- **Movimento:** só um, na abertura: a régua logarítmica é "puxada" da esquerda para a direita.
+- **Movimento:** a régua logarítmica "puxada" na abertura, duas fitas de termos econômicos rolando em sentidos opostos abaixo dela e o cabeçalho que se esconde ao descer e volta ao subir. Tudo para quem pede movimento reduzido.
+- **Leva final:** mistura dos design systems open-design (papel com grão, réguas, anéis tracejados, placa de figura) e auragen (cartões de vidro, grade de opções e rodapé em colunas no quadro de giz). Lista completa em `docs/identidade.md`.
 - Estudo completo, com o prompt da foto definitiva do hero, em [`docs/identidade.md`](docs/identidade.md).
 
 ## Como funciona por dentro
@@ -46,6 +47,7 @@ Seu navegador faz todas as contas sozinho. O simulador calcula mês a mês: apli
 - Juros compostos com taxa mensal equivalente `(1+i)^(1/12)-1`, aporte no fim do mês, aporte corrigido pela inflação uma vez por ano (opcional) e valor real `nominal / (1+inflação mensal)^meses`.
 - Price: `PMT = PV*i / (1-(1+i)^-n)`. SAC: amortização `PV/n` e juros sobre o saldo.
 - `img/hero.webp` é uma foto gerada por IA no Canva (1620x1080), feita a partir do prompt de `docs/identidade.md`.
+- Todas as fotos do site são **geradas por IA no Canva e ilustrativas**: ninguém e nenhum lugar real aparece nelas. Na leva final entraram `img/mesa-estudo-caderno.webp` (4:3), `img/economista-quadro-perfil.webp` (3:4), as quatro fotos quadradas dos serviços (`img/servico-cenarios-folhas.webp`, `img/servico-planejamento-caderno.webp`, `img/servico-viabilidade-regua.webp`, `img/servico-parecer-documento.webp`) e `img/sala-estudo-quadro.webp` (4:5). Os arquivos são as fotos finais, convertidas para webp no tamanho certo. Os prompts e os lugares de cada uma estão em `docs/identidade.md`, seção "Design systems aplicados (leva final)".
 
 ## Como rodar
 

@@ -83,3 +83,38 @@ Prompt em português para o Canva:
 - Comparador de financiamento Price x SAC, com tabela e gráfico das parcelas.
 - Termômetro com séries fictícias (inflação, juros, câmbio) filtráveis por período, rotuladas como inventadas.
 - Pedido de estudo com validação e resumo na tela.
+
+## Design systems aplicados (leva final)
+
+Dupla escolhida no catálogo da Mil e Uma Linhas!: **open-design-design-system** (claro: papel com grão, réguas hairline, anéis tracejados, placa de figura com cantos e anotações) e **auragen-design-system** (escuro: cartões de vidro com grade de pontos, grade de opções segmentada, barra de progresso, título com máscara em degradê, rodapé em colunas com barra de chamada). A paleta não mudou: o open-design entra com Papel no lugar do pergaminho, Tinta no lugar do preto quente, Lápis vermelho no lugar do coral (uma vez por tela) e Traço/Quadriculado nas réguas; o auragen entra só nas faixas de Quadro de giz (termômetro e rodapé), com Quadro no lugar do azul-noite, Quadro claro nos painéis, Giz apagado nas bordas a 10% e Giz amarelo no lugar do índigo. Sem biblioteca externa, sem WebGL: tudo em CSS e JavaScript próprios, com os movimentos desligados em `prefers-reduced-motion`.
+
+Componentes e onde estão:
+
+| Padrão | Origem | Onde |
+|---|---|---|
+| Paper ground (manchas radiais e grão SVG em multiply a 6%) | open-design | `body::before`, fixo, por cima do quadriculado |
+| Hero plate (cantos de 22px, anotações "fig. 01" e "oferta e demanda", placa fosca "quadro de giz, Cuiabá") | open-design | `.hero-placa` e `.hero-moldura` |
+| Twin marquee wire (duas fitas de termos em sentidos opostos, 60s, CSS puro) | open-design | `.fio`, logo abaixo da régua do hero |
+| Section rule (ponto Lápis vermelho, hairline Traço e meta à direita) | open-design | `.secao-regua` acima de cada h2 |
+| Pills com contagem (todos, empresas, pessoas) | open-design | `.pilulas` em #servicos; a variação de cada série do termômetro também virou pílula |
+| Capability card (hover de 3px e círculo com seta que preenche em Lápis vermelho) | open-design | `.servico` e `.servico-seta` |
+| Dashed number ring (anel tracejado de 40px com os dias) | open-design | `.servico-prazo .anel` |
+| Primary pill com sombra e seta, ghost com ícone de mais | open-design | `.botao-principal` e `.botao-contorno` (raio 3px mantido) |
+| Site chrome que se esconde ao descer e volta ao subir | open-design | `.topo` (classe `topo-oculto`, 360ms) |
+| Glass card com grade de pontos a 8% e halo que segue o ponteiro | auragen | `.cotacao` em #termometro |
+| Progress bar com preenchimento em Giz amarelo | auragen | `#ter-cursor` (variável `--valor`) |
+| Segmented option grid (5 colunas, 3 no celular) | auragen | `.quadro-barra .giz-botao` |
+| Gradient-masked display type | auragen | h2 de #termometro |
+| Footer columns + glass CTA bar | auragen | `.rodape-cta` e `.rodape-grade` (três colunas) |
+
+Imagens da leva final (geradas por IA no Canva, ilustrativas; os arquivos em `img/` são as versões finais, no tamanho e proporção certos):
+
+| Arquivo | Proporção | Onde |
+|---|---|---|
+| `img/mesa-estudo-caderno.webp` | 4:3 (1456x1088) | `.servicos-foto`, cabeçalho de #servicos |
+| `img/economista-quadro-perfil.webp` | 3:4 (1088x1456) | `.retrato-foto`, ao lado da mesa |
+| `img/servico-cenarios-folhas.webp` | 1:1 (1024x1024) | foto do serviço "Análise de cenários" |
+| `img/servico-planejamento-caderno.webp` | 1:1 (1024x1024) | foto do serviço "Planejamento financeiro" |
+| `img/servico-viabilidade-regua.webp` | 1:1 (1024x1024) | foto do serviço "Estudo de viabilidade" |
+| `img/servico-parecer-documento.webp` | 1:1 (1024x1024) | foto do serviço "Parecer econômico" |
+| `img/sala-estudo-quadro.webp` | 4:5 (1088x1360) | `.pedido-foto`, coluna direita de #pedido (some quando o resumo aparece) |

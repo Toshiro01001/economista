@@ -53,43 +53,84 @@
           </p>
         </div>
         <figure class="hero-figura">
-          <div class="hero-moldura">
-            <img class="hero-foto" src="img/hero.webp" width="1620" height="1080" alt="Lousa escura com duas curvas, de oferta e de demanda, que se cruzam, e um caderno com lápis vermelho sobre a mesa em primeiro plano.">
+          <div class="hero-placa">
+            <span class="hero-canto hero-canto-tl" aria-hidden="true"></span>
+            <span class="hero-canto hero-canto-tr" aria-hidden="true"></span>
+            <span class="hero-canto hero-canto-bl" aria-hidden="true"></span>
+            <span class="hero-canto hero-canto-br" aria-hidden="true"></span>
+            <span class="hero-anota hero-anota-tl" aria-hidden="true">fig. 01</span>
+            <span class="hero-anota hero-anota-tr" aria-hidden="true">oferta e demanda</span>
+            <div class="hero-moldura">
+              <img class="hero-foto" src="img/hero.webp" width="1620" height="1080" alt="Lousa escura com duas curvas, de oferta e de demanda, que se cruzam, e um caderno com lápis vermelho sobre a mesa em primeiro plano.">
+              <span class="hero-indice" aria-hidden="true">quadro de giz, Cuiabá</span>
+            </div>
           </div>
           <figcaption>Oferta e demanda se encontram onde a conversa começa.</figcaption>
         </figure>
       </div>
       <div class="regua" aria-hidden="true"></div>
+      <div class="fio" aria-hidden="true">
+        <div class="fio-linha">
+          <div class="fio-trilho">custo marginal · taxa real · ponto de equilíbrio · elasticidade · Price · SAC · cenário base · custo marginal · taxa real · ponto de equilíbrio · elasticidade · Price · SAC · cenário base · custo marginal · taxa real · ponto de equilíbrio · elasticidade · Price · SAC · cenário base · </div>
+          <div class="fio-trilho">custo marginal · taxa real · ponto de equilíbrio · elasticidade · Price · SAC · cenário base · custo marginal · taxa real · ponto de equilíbrio · elasticidade · Price · SAC · cenário base · custo marginal · taxa real · ponto de equilíbrio · elasticidade · Price · SAC · cenário base · </div>
+        </div>
+        <div class="fio-linha fio-linha-volta">
+          <div class="fio-trilho">valor presente · juros compostos · inflação acumulada · payback · margem de contribuição · cenário ruim · cenário bom · valor presente · juros compostos · inflação acumulada · payback · margem de contribuição · cenário ruim · cenário bom · valor presente · juros compostos · inflação acumulada · payback · margem de contribuição · cenário ruim · cenário bom · </div>
+          <div class="fio-trilho">valor presente · juros compostos · inflação acumulada · payback · margem de contribuição · cenário ruim · cenário bom · valor presente · juros compostos · inflação acumulada · payback · margem de contribuição · cenário ruim · cenário bom · valor presente · juros compostos · inflação acumulada · payback · margem de contribuição · cenário ruim · cenário bom · </div>
+        </div>
+      </div>
     </section>
 
     <section id="servicos" class="secao">
       <div class="miolo">
-        <h2>O que eu faço</h2>
-        <p class="frase">Quatro tipos de trabalho. Leia o que cada um entrega e, se algum for o seu caso, peça o estudo mais abaixo.</p>
+        <div class="secao-regua" aria-hidden="true"><span>serviços</span></div>
+        <div class="servicos-cabeca">
+          <div class="servicos-texto">
+            <h2>O que eu faço</h2>
+            <p class="frase">Quatro tipos de trabalho. Leia o que cada um entrega e, se algum for o seu caso, peça o estudo mais abaixo.</p>
+          </div>
+          <div class="servicos-fotos">
+            <figure class="servicos-foto">
+              <img src="img/mesa-estudo-caderno.webp" width="1456" height="1088" loading="lazy" decoding="async" alt="Mesa de madeira clara com caderno quadriculado aberto em página em branco, lápis vermelho, régua de madeira e uma xícara, vistos de cima em ângulo.">
+            </figure>
+            <figure class="retrato-foto">
+              <img src="img/economista-quadro-perfil.webp" width="1088" height="1456" loading="lazy" decoding="async" alt="Economista adulta vista de costas e de perfil, escrevendo com giz amarelo em um quadro ameixa, com o rosto fora de foco.">
+            </figure>
+          </div>
+        </div>
+        <div class="pilulas" role="group" aria-label="Filtrar os serviços por público">
+          <button type="button" class="pilula" data-publico="todos" aria-pressed="true">todos <span class="pilula-conta">4</span></button>
+          <button type="button" class="pilula" data-publico="empresas" aria-pressed="false">empresas <span class="pilula-conta">4</span></button>
+          <button type="button" class="pilula" data-publico="pessoas" aria-pressed="false">pessoas <span class="pilula-conta">2</span></button>
+        </div>
         <div class="servicos">
-          <article class="servico">
-            <svg class="servico-icone" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M6 24H20"/><path d="M20 24L42 10"/><path d="M20 24H42"/><path d="M20 24L42 38"/><circle cx="20" cy="24" r="3"/></svg>
+          <article class="servico" data-publico="empresas">
+            <img class="servico-foto" src="img/servico-cenarios-folhas.webp" width="1024" height="1024" loading="lazy" decoding="async" alt="Três folhas de papel com curvas desenhadas a lápis, uma delas marcada por um traço vermelho, em leque sobre a mesa.">
             <h3>Análise de cenários</h3>
             <p>Monto três futuros possíveis para a sua decisão (o provável, o ruim e o bom) e mostro o que muda no seu caixa em cada um. Você sai com uma tabela e com a pergunta certa a fazer.</p>
-            <p class="servico-prazo">Entrega em cerca de 10 dias</p>
+            <p class="servico-prazo"><span class="anel">10</span> dias para entrega</p>
+            <a class="servico-seta" href="#pedido" aria-label="Pedir uma análise de cenários"></a>
           </article>
-          <article class="servico">
-            <svg class="servico-icone" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M6 40H16V30H26V20H36V10H42"/><path d="M6 44H42"/></svg>
+          <article class="servico" data-publico="empresas pessoas">
+            <img class="servico-foto" src="img/servico-planejamento-caderno.webp" width="1024" height="1024" loading="lazy" decoding="async" alt="Caderno quadriculado aberto com uma tabela desenhada a lápis e desfocada, um clipe vermelho e uma caneta sobre a página.">
             <h3>Planejamento financeiro</h3>
             <p>Para empresas e para pessoas: quanto entra, quanto sai, quanto sobra e para onde a sobra deve ir. O plano cabe em uma página e tem metas que dá para acompanhar mês a mês.</p>
-            <p class="servico-prazo">Entrega em cerca de 15 dias</p>
+            <p class="servico-prazo"><span class="anel">15</span> dias para entrega</p>
+            <a class="servico-seta" href="#pedido" aria-label="Pedir um planejamento financeiro"></a>
           </article>
-          <article class="servico">
-            <svg class="servico-icone" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M6 36C16 36 22 12 42 12"/><path d="M6 24H42" stroke-dasharray="4 4"/><circle cx="24" cy="24" r="3"/></svg>
+          <article class="servico" data-publico="empresas">
+            <img class="servico-foto" src="img/servico-viabilidade-regua.webp" width="1024" height="1024" loading="lazy" decoding="async" alt="Régua de cálculo antiga de madeira e uma calculadora de mesa branca sobre papel quadriculado lilás claro.">
             <h3>Estudo de viabilidade</h3>
             <p>Antes de abrir a filial, comprar a máquina ou lançar o produto, eu respondo: dá para pagar a conta, em quanto tempo volta o dinheiro e qual preço mínimo segura o projeto de pé.</p>
-            <p class="servico-prazo">Entrega em cerca de 20 dias</p>
+            <p class="servico-prazo"><span class="anel">20</span> dias para entrega</p>
+            <a class="servico-seta" href="#pedido" aria-label="Pedir um estudo de viabilidade"></a>
           </article>
-          <article class="servico">
-            <svg class="servico-icone" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M12 6H32L38 12V42H12Z"/><path d="M18 20H32M18 26H32M18 32H27"/></svg>
+          <article class="servico" data-publico="empresas pessoas">
+            <img class="servico-foto" src="img/servico-parecer-documento.webp" width="1024" height="1024" loading="lazy" decoding="async" alt="Documento encadernado com capa violeta escura e fita, um carimbo de madeira e uma caneta-tinteiro sobre mesa de madeira clara.">
             <h3>Parecer econômico</h3>
             <p>Um documento assinado que explica, com números e fontes, o impacto econômico de um fato, para apresentar a sócios, bancos, conselhos ou à Justiça. Linguagem direta, sem juridiquês e sem economês.</p>
-            <p class="servico-prazo">Entrega em cerca de 12 dias</p>
+            <p class="servico-prazo"><span class="anel">12</span> dias para entrega</p>
+            <a class="servico-seta" href="#pedido" aria-label="Pedir um parecer econômico"></a>
           </article>
         </div>
       </div>
@@ -97,6 +138,7 @@
 
     <section id="simulador" class="secao secao-clara">
       <div class="miolo">
+        <div class="secao-regua" aria-hidden="true"><span>simulação</span></div>
         <h2>Quanto o seu dinheiro vira, e quanto ele vale de verdade</h2>
         <p class="frase">Preencha os cinco campos e veja duas linhas: o saldo em reais futuros (nominal) e o mesmo saldo em reais de hoje (real, já descontada a inflação).</p>
 
@@ -184,6 +226,7 @@
 
     <section id="financiamento" class="secao">
       <div class="miolo">
+        <div class="secao-regua" aria-hidden="true"><span>simulação</span></div>
         <h2>Financiar pela tabela Price ou pelo SAC?</h2>
         <p class="frase">Informe o financiamento e compare as duas tabelas: a Price tem parcela fixa; no SAC a parcela começa maior e cai todo mês.</p>
 
@@ -259,6 +302,7 @@
 
     <section id="termometro" class="secao secao-quadro">
       <div class="miolo">
+        <div class="secao-regua" aria-hidden="true"><span>dados inventados</span></div>
         <h2>Termômetro da economia</h2>
         <p class="frase">Escolha uma linha do quadro e um período para ver como ela andou. <b>Os números são inventados</b> para esta demonstração: não são do IBGE, do Banco Central nem de ninguém.</p>
 
@@ -308,10 +352,15 @@
 
     <section id="pedido" class="secao secao-clara">
       <div class="miolo">
+        <div class="secao-regua" aria-hidden="true"><span>ferramenta</span></div>
         <h2>Peça um estudo</h2>
         <p class="frase">Conte o que você quer decidir e em quanto tempo. Nesta demonstração, o pedido aparece resumido na tela e não é enviado a ninguém.</p>
 
         <div class="pedido-grade">
+          <figure class="pedido-foto">
+            <img src="img/sala-estudo-quadro.webp" width="1088" height="1360" loading="lazy" decoding="async" alt="Sala de estudo com um quadro de giz ameixa limpo, uma cadeira de madeira, mesa com caderno quadriculado e janela com luz suave.">
+            <figcaption>A sala onde os estudos são feitos (cenário ilustrativo).</figcaption>
+          </figure>
           <form id="form-pedido" class="campos" novalidate autocomplete="off">
             <p class="erro erro-geral" id="pedido-erro" role="alert" hidden></p>
             <div class="campo">
@@ -386,6 +435,7 @@
 
     <section id="como-funciona" class="secao secao-escura-papel">
       <div class="miolo">
+        <div class="secao-regua" aria-hidden="true"><span>bastidores</span></div>
         <h2>Como isto funciona</h2>
         <p class="frase">Este site é uma demonstração da Mil e Uma Linhas! para mostrar a uma economista o que um site dela pode fazer. Tudo aqui é inventado.</p>
         <div class="funciona-grade">
@@ -415,12 +465,33 @@
 
   <footer class="rodape">
     <div class="regua regua-clara" aria-hidden="true"></div>
-    <div class="miolo rodape-grade">
-      <div>
-        <p class="rodape-marca">Marginal estudos econômicos</p>
-        <p>Helena Barros Quirino, economista (Corecon-MT 00000, número fictício). Rua das Acácias, 000, Cuiabá, MT. Telefone (65) 90000-0000. Tudo fictício.</p>
+    <div class="miolo">
+      <div class="rodape-cta">
+        <div>
+          <p class="rodape-cta-titulo">Tem uma decisão com número no meio?</p>
+          <p class="rodape-cta-texto">Conte o que você quer decidir. Nesta demonstração, o pedido fica só na sua tela.</p>
+        </div>
+        <a class="botao botao-giz" href="#pedido">Peça um estudo</a>
       </div>
-      <p>Site de demonstração feito pela <a href="https://mileumalinhas.com.br" rel="noopener">Mil e Uma Linhas!</a>. Nenhum dado real, nenhum serviço vendido.</p>
+      <div class="rodape-grade">
+        <div>
+          <p class="rodape-marca">Marginal estudos econômicos</p>
+          <p>Helena Barros Quirino, economista (Corecon-MT 00000, número fictício). Rua das Acácias, 000, Cuiabá, MT. Telefone (65) 90000-0000. Tudo fictício.</p>
+        </div>
+        <nav aria-label="Atalhos das ferramentas">
+          <p class="rodape-titulo">Ferramentas</p>
+          <ul class="rodape-lista">
+            <li><a href="#simulador">Juros e inflação</a></li>
+            <li><a href="#financiamento">Price ou SAC</a></li>
+            <li><a href="#termometro">Termômetro</a></li>
+            <li><a href="#pedido">Pedir um estudo</a></li>
+          </ul>
+        </nav>
+        <div>
+          <p class="rodape-titulo">Demonstração</p>
+          <p>Site feito pela <a href="https://mileumalinhas.com.br" rel="noopener">Mil e Uma Linhas!</a>. Nenhum dado real, nenhum serviço vendido. As fotos são ilustrativas, geradas por IA.</p>
+        </div>
+      </div>
     </div>
   </footer>
 
