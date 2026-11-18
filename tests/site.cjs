@@ -247,6 +247,12 @@ async function testaQuadro(page, nome) {
   checa(t.h1 === 1 && /Eu faço a conta\.\s?A decisão\s?continua sua\./.test(t.titulo), `${nome}: título principal (${t.h1}: ${t.titulo})`);
   checa(t.canvas === t.temGl, `${nome}: quadro em WebGL deveria ligar só com WebGL2 (tem ${t.temGl}, ligou ${t.canvas})`);
   checa(t.rtj, `${nome}: assinatura sem o RTJ vivo`);
+  /* o quadro liga depois que a página carrega; ligado, ele precisa aparecer de verdade (opacidade cheia), não só existir */
+  if (t.temGl) {
+    await page.waitForFunction(() => { const c = document.querySelector(".hero > canvas"); return c && getComputedStyle(c).opacity === "1"; }, null, { timeout: 6000 }).catch(() => {});
+    const visto = await page.evaluate(() => { const c = document.querySelector(".hero > canvas"); return c ? getComputedStyle(c).opacity : "sem canvas"; });
+    checa(visto === "1", `${nome}: o quadro em WebGL ligou mas não apareceu (opacidade ${visto})`);
+  }
   /* mexer na demanda muda o preço e a quantidade de equilíbrio, sempre para o mesmo lado */
   const ler = async () => { const v = await page.$$eval(".quadro-leitura dd", (l) => l.map((e) => e.textContent)); return { p: parseFloat(v[0].replace(/[^0-9,]/g, "").replace(",", ".")), q: parseFloat(v[1].replace(/\./g, "")) }; };
   const por = async (valor) => { await page.$eval(".quadro-faixa input", (el, val) => { Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set.call(el, String(val)); el.dispatchEvent(new Event("input", { bubbles: true })); }, valor); await espera(1500); return ler(); };

@@ -66,3 +66,13 @@ Risco novo: o arquivo de programa passou a ter cerca de 224 KB (73 KB comprimido
 | Privacidade | 72 |
 
 O que puxou a nota para baixo: no celular o JavaScript ocupa o aparelho por 3,4 s (o quadro de giz liga cedo demais e desenha pontos demais), as quatro fotos dos serviços pesam 309 KB para aparecer com 116 px, a primeira tela leva 2,5 s e o título tem 66 caracteres. A nota de Pixel é baixa porque o site não tem rastreador de anúncio, de propósito. Os ajustes de velocidade ficam em um ramo de teste até o dono pedir a publicação.
+
+## Ajuste de velocidade (17/11/2026, ramo de teste `giz-leve`)
+
+- O quadro de giz só liga depois que a página termina de carregar e o navegador fica livre.
+- O quadro desenha menos pontos por vez (teto de 800 mil no celular e 1,5 milhão no computador) e, parado, redesenha a metade das vezes.
+- O fiscal de fluidez decide nos 12 primeiros quadros, em vez de 100. Em aparelho que não acompanha, fica o desenho pronto e a régua continua funcionando.
+- As quatro fotos dos serviços passaram de 1024 px para 256 px: de 309 KB para 26 KB no total.
+- O título da aba passou de 66 para 52 caracteres.
+- Medição local, em celular simulado com processador 4 vezes mais lento e WebGL por software: o tempo em que o aparelho fica ocupado caiu de cerca de 6,1 s para 2,5 s. É uma comparação entre as duas versões, não o número que o Raio-X vai dar.
+- Segurança: nada mudou na CSP, nas dependências, nos links ou no envio de dados. O teste ganhou uma checagem nova: o quadro precisa aparecer de verdade depois de ligar.
