@@ -54,3 +54,15 @@ O site foi refeito no Padrão Premium. Mudou a forma de construir, então a vist
 | Testes | `tests/site.cjs` passa em 1280x900, iPhone 13, 320 px, com movimento reduzido e sem JavaScript. |
 
 Risco novo: o arquivo de programa passou a ter cerca de 224 KB (73 KB comprimido), por causa do React. O risco de interpretação continua o mesmo: as simulações são ilustrativas e estão avisadas em cada ferramenta.
+
+## Raio-X do ProfitizeBuild depois de publicar (17/11/2026): 69/100
+
+| Área | Nota |
+|---|---|
+| Velocidade | 66 |
+| Celular | 100 |
+| SEO | 82 |
+| Pixel | 11 |
+| Privacidade | 72 |
+
+O que puxou a nota para baixo: no celular o JavaScript ocupa o aparelho por 3,4 s (o quadro de giz liga cedo demais e desenha pontos demais), as quatro fotos dos serviços pesam 309 KB para aparecer com 116 px, a primeira tela leva 2,5 s e o título tem 66 caracteres. A nota de Pixel é baixa porque o site não tem rastreador de anúncio, de propósito. Os ajustes de velocidade ficam em um ramo de teste até o dono pedir a publicação.
