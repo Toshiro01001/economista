@@ -76,3 +76,15 @@ O que puxou a nota para baixo: no celular o JavaScript ocupa o aparelho por 3,4 
 - O título da aba passou de 66 para 52 caracteres.
 - Medição local, em celular simulado com processador 4 vezes mais lento e WebGL por software: o tempo em que o aparelho fica ocupado caiu de cerca de 6,1 s para 2,5 s. É uma comparação entre as duas versões, não o número que o Raio-X vai dar.
 - Segurança: nada mudou na CSP, nas dependências, nos links ou no envio de dados. O teste ganhou uma checagem nova: o quadro precisa aparecer de verdade depois de ligar.
+
+## Raio-X depois do ajuste de velocidade (18/11/2026): 79/100
+
+| Área | Antes | Depois |
+|---|---|---|
+| Velocidade | 66 | 97 |
+| Celular | 100 | 100 |
+| SEO | 82 | 94 |
+| Pixel | 11 | 11 |
+| Privacidade | 72 | 72 |
+
+A primeira tela aparece em 2,0 s no 4G e as imagens estão no tamanho certo. O que resta na lista é de site de cliente de verdade, não de demonstração: Pixel da Meta, Analytics, política de privacidade, termos, CNPJ e domínio próprio. O site não tem rastreador nem coleta dados, de propósito. O aviso de sitemap se refere à raiz do endereço github.io; o sitemap da vitrine fica em `/economista/sitemap.xml`.
