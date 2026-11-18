@@ -44,6 +44,7 @@ async function verificacoesBasicas(page, rotulo) {
     for (const el of els) {
       if (el.closest("[hidden]") || (el.offsetParent === null && getComputedStyle(el).position !== "fixed")) continue;
       if (el.closest(".tabela-rolagem")) continue;
+      if (el.closest(".fitas")) continue; /* as fitas de termos correm de propósito para fora da tela, dentro de uma caixa que as corta */
       const cs = getComputedStyle(el);
       if (cs.overflow === "hidden" || cs.overflowX === "hidden") continue;
       if (el.scrollWidth > el.clientWidth + 2 && el.clientWidth > 0) {
@@ -55,6 +56,13 @@ async function verificacoesBasicas(page, rotulo) {
     return out;
   });
   checa(cortados.length === 0, `${rotulo}: textos cortados ou fora da tela: ${cortados.join(" | ")}`);
+  /* nenhum campo pode passar da borda do formulário em que está */
+  const vazando = await page.evaluate(() => [...document.querySelectorAll("form input, form select, form textarea")].filter((el) => {
+    if (el.closest("[hidden]") || el.type === "radio" || el.type === "checkbox") return false;
+    const f = el.closest("form").getBoundingClientRect(), r = el.getBoundingClientRect();
+    return r.width > 0 && (r.right > f.right + 1 || r.right > window.innerWidth);
+  }).map((el) => el.id || el.name));
+  checa(vazando.length === 0, `${rotulo}: campos passando da borda do formulário: ${vazando.join(", ")}`);
 }
 
 async function graficoOk(page, sel, rotulo, linhas) {
@@ -229,6 +237,45 @@ async function testaFuncoes(page, rotulo, capturas, sufixo) {
   checa((await page.inputValue("#mensagem")).startsWith("Comparei um financiamento de R$ 280.000,00"), `${rotulo}: levar financiamento não preencheu (${(await page.inputValue("#mensagem")).slice(0, 60)})`);
 }
 
+/* O quadro de giz do topo: um título principal, o relevo em WebGL quando o aparelho tem WebGL2 e a conta de oferta e demanda. */
+async function testaQuadro(page, nome) {
+  const t = await page.evaluate(() => ({
+    h1: document.querySelectorAll("h1").length, titulo: document.querySelector("h1").textContent.replace(/\s+/g, " ").trim(),
+    canvas: !!document.querySelector(".hero > canvas"), temGl: (() => { try { return !!document.createElement("canvas").getContext("webgl2"); } catch (e) { return false; } })(),
+    rtj: !!document.querySelector(".assinatura .rtj-vivo")
+  }));
+  checa(t.h1 === 1 && /Eu faço a conta\.\s?A decisão\s?continua sua\./.test(t.titulo), `${nome}: título principal (${t.h1}: ${t.titulo})`);
+  checa(t.canvas === t.temGl, `${nome}: quadro em WebGL deveria ligar só com WebGL2 (tem ${t.temGl}, ligou ${t.canvas})`);
+  checa(t.rtj, `${nome}: assinatura sem o RTJ vivo`);
+  /* mexer na demanda muda o preço e a quantidade de equilíbrio, sempre para o mesmo lado */
+  const ler = async () => { const v = await page.$$eval(".quadro-leitura dd", (l) => l.map((e) => e.textContent)); return { p: parseFloat(v[0].replace(/[^0-9,]/g, "").replace(",", ".")), q: parseFloat(v[1].replace(/\./g, "")) }; };
+  const por = async (valor) => { await page.$eval(".quadro-faixa input", (el, val) => { Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set.call(el, String(val)); el.dispatchEvent(new Event("input", { bubbles: true })); }, valor); await espera(1500); return ler(); };
+  const meio = await por(50), mais = await por(100), menos = await por(0);
+  checa(perto(meio.p, 14.85, 0.6) && perto(meio.q, 310, 20), `${nome}: equilíbrio no meio fora do esperado (R$ ${meio.p}, ${meio.q})`);
+  checa(mais.p > meio.p && mais.q > meio.q, `${nome}: mais demanda deveria subir preço e quantidade (${JSON.stringify(mais)})`);
+  checa(menos.p < meio.p && menos.q < meio.q, `${nome}: menos demanda deveria baixar preço e quantidade (${JSON.stringify(menos)})`);
+  checa(/Menos procura/.test(await page.textContent("#hero-leitura")), `${nome}: a leitura do quadro não acompanhou a demanda`);
+  await por(50);
+}
+
+/* Com movimento reduzido nada fica escondido esperando animação; sem JavaScript o título e o aviso aparecem. */
+async function testaCalmo(browser) {
+  const c = await browser.newContext({ viewport: { width: 1280, height: 900 }, reducedMotion: "reduce" });
+  const p = await c.newPage();
+  await p.goto(URL, { waitUntil: "networkidle" }); await espera(900);
+  const escondidos = await p.evaluate(() => [...document.querySelectorAll(".linha, .sobe, .quadro-area > span")].filter((e) => Number(getComputedStyle(e).opacity) < 0.99).length);
+  checa(escondidos === 0, `movimento reduzido: ${escondidos} elementos escondidos`);
+  checa(!(await p.evaluate(() => !!document.querySelector(".rtj-vivo canvas"))), "movimento reduzido: o RTJ deveria ficar parado");
+  await c.close();
+  const s = await browser.newContext({ viewport: { width: 390, height: 800 }, javaScriptEnabled: false });
+  const q = await s.newPage();
+  await q.goto(URL);
+  checa((await q.locator("h1").count()) === 1 && /Eu faço a conta/.test(await q.textContent("h1")), "sem JavaScript: título principal ausente");
+  checa(await q.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), "sem JavaScript: rolagem horizontal");
+  await s.close();
+  console.log("movimento reduzido e sem JavaScript: ok (falhas até aqui " + falhas.length + ")");
+}
+
 (async () => {
   if (CAPTURAS) fs.mkdirSync(CAP_DIR, { recursive: true });
   const proc = await servidor();
@@ -248,9 +295,11 @@ async function testaFuncoes(page, rotulo, capturas, sufixo) {
       page.on("requestfailed", (r) => erros.push("requestfailed: " + r.url()));
       const externas = [];
       page.on("request", (r) => { if (!r.url().startsWith(`http://127.0.0.1:${PORTA}/`) && !r.url().startsWith("data:")) externas.push(r.url()); });
+      await page.addInitScript(() => { window.__csp = []; document.addEventListener("securitypolicyviolation", (e) => window.__csp.push(e.effectiveDirective + " " + e.blockedURI)); });
       await page.goto(URL, { waitUntil: "networkidle" });
-      await espera(1800);
+      await espera(3600); /* o giz leva uns 2,6 s para desenhar as curvas */
       await verificacoesBasicas(page, c.nome + " (abertura)");
+      await testaQuadro(page, c.nome);
 
       await page.keyboard.press("Tab");
       const ativo = await page.evaluate(() => document.activeElement.className);
@@ -280,12 +329,16 @@ async function testaFuncoes(page, rotulo, capturas, sufixo) {
       await page.goto(URL + "404.html", { waitUntil: "networkidle" });
       await verificacoesBasicas(page, c.nome + " (404)");
 
-      const errosReais = erros.filter((e) => !/404\.html|favicon/.test(e) || /pageerror/.test(e));
+      /* "GL Driver Message" é aviso do driver de vídeo da máquina de teste (WebGL por software), não do site. */
+      const errosReais = erros.filter((e) => !/404\.html|favicon|GL Driver Message/.test(e) || /pageerror/.test(e));
       checa(errosReais.length === 0, `${c.nome}: console: ${errosReais.join(" | ")}`);
       checa(externas.length === 0, `${c.nome}: pedidos externos: ${externas.join(" | ")}`);
       console.log(`${c.nome}: ok (console ${errosReais.length}, pedidos externos ${externas.length}, falhas até aqui ${falhas.length})`);
+      const csp = await page.evaluate(() => window.__csp);
+      checa(csp.length === 0, `${c.nome}: violação da política de segurança (CSP): ${csp.join(" | ")}`);
       await context.close();
     }
+    await testaCalmo(browser);
 
     if (SHOTS_DIR) {
       fs.mkdirSync(SHOTS_DIR, { recursive: true });

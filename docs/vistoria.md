@@ -32,3 +32,25 @@ Revisão feita depois de aplicar os design systems da leva final e encaixar as f
 - **Dados pessoais:** nenhum dado pessoal real entrou. Pessoas, empresas, telefones e endereços seguem fictícios. As fotos não retratam pessoas reais.
 - **Imagens:** arquivos webp locais em `img/`, com `width`/`height`, `loading="lazy"` e `decoding="async"`. Nenhuma é carregada de outro domínio.
 - **Testes:** `tests/site.cjs` passa em 1280x900, iPhone 13 e 320px, sem erro de console e sem rolagem horizontal.
+
+## Revisão de 17/11/2026 (site refeito em React, com WebGL)
+
+O site foi refeito no Padrão Premium. Mudou a forma de construir, então a vistoria foi refeita do zero.
+
+| Ponto | Resultado |
+|---|---|
+| CSP | A mesma política de antes, sem afrouxar: `default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'`. O `404.html` usa `script-src 'none'`. |
+| Violações de CSP na prática | Nenhuma. Os testes escutam o evento de violação nos três tamanhos de tela, com o quadro em WebGL e o RTJ vivo ligados. |
+| Script e estilo inline | Nenhum `<script>` inline, nenhum `<style>`, nenhum atributo `style` no HTML. O programa aplica posições direto no elemento (CSSOM), o que a CSP permite. |
+| Envio de dados | Nenhum. No arquivo compilado não há `fetch`, `XMLHttpRequest` nem `WebSocket`, e `connect-src 'none'` bloquearia qualquer tentativa. Os testes confirmam zero pedidos externos. |
+| Armazenamento | Nenhum uso de `localStorage`, `sessionStorage`, cookies ou IndexedDB. |
+| Código perigoso | Nenhum `eval`, `new Function` ou `document.write` no arquivo compilado. O código da página não usa `innerHTML` nem `dangerouslySetInnerHTML`. |
+| Dependências | React 18.3.1, React DOM 18.3.1 e Lenis 1.3.27, compiladas dentro de `assets/`. `npm audit` nas dependências de produção: 0 vulnerabilidades em 17/11/2026. Licenças em `licencas/`. |
+| WebGL | Dois shaders próprios (o quadro de giz e o RTJ vivo da assinatura), sem biblioteca e sem textura externa. Sem WebGL a página funciona igual. |
+| Contas expostas | `window.Calc` e `window.SERIES_FICTICIAS` continuam à vista, como na versão anterior, para os testes conferirem os números. São só funções de conta e séries inventadas. |
+| Links externos | Só https://mileumalinhas.com.br, com `rel="noopener"`. |
+| Dados pessoais e segredos | Nenhum dado real. Economista, Corecon, endereço, telefone e séries são fictícios e marcados como tal. Nenhuma chave, token ou senha no repositório. |
+| Código-fonte | Fica no repositório privado. Aqui só entra a página compilada. |
+| Testes | `tests/site.cjs` passa em 1280x900, iPhone 13, 320 px, com movimento reduzido e sem JavaScript. |
+
+Risco novo: o arquivo de programa passou a ter cerca de 224 KB (73 KB comprimido), por causa do React. O risco de interpretação continua o mesmo: as simulações são ilustrativas e estão avisadas em cada ferramenta.
